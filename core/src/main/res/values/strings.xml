@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">core</string>
+
+
+    <string name="text_has_been_copied_to_the_clipboard">Текст скопирован в буфер обмена</string>
+
+    <!-- Connection state view -->
+    <string name="no_connection">Нет соединения к сети</string>
+    <string name="connecting">Подключение…</string>
+
 </resources>
