@@ -13,3 +13,4 @@ release_keystore.properties
 gp_publisher_keys.json
 publisher-key.json
 *.jks
+secretconfig.gradle
