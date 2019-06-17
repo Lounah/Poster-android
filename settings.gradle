@@ -1,1 +1,1 @@
-include ':app', ':singlelinetextview'
+include ':app'
