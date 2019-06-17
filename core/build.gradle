@@ -35,7 +35,6 @@ android {
 
 dependencies {
     kapt "com.github.bumptech.glide:compiler:${versions.glide}"
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 }
 
 androidExtensions {
