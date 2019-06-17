@@ -19,18 +19,22 @@ class ConnectionStateView : LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.view_connection_state, this, true)
         layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         orientation = HORIZONTAL
+
+        textViewConnectionState.apply {
+            textSize = 14f
+        }
     }
 
     fun applyConnectingState() {
         show()
-        textViewConnectionState.setTextColor(context.getColorCompat(android.R.color.black))
+        textViewConnectionState.textColorRes = context.getColorCompat(android.R.color.black)
         textViewConnectionState.text = context.resources.getString(R.string.connecting)
         progressBar.show()
     }
 
     fun applyNoConnectionState() {
         show()
-        textViewConnectionState.setTextColor(context.getColorCompat(android.R.color.holo_red_light))
+        textViewConnectionState.textColorRes = context.getColorCompat(android.R.color.holo_red_light)
         textViewConnectionState.text = context.resources.getString(R.string.no_connection)
         progressBar.hide()
     }

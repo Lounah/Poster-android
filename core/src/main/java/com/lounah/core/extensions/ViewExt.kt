@@ -12,6 +12,11 @@ import android.view.inputmethod.InputMethodManager
 
 fun Float.spToPx(): Float = this * Resources.getSystem().displayMetrics.scaledDensity
 
+fun Int.dpToPx(): Int {
+    val density = Resources.getSystem().displayMetrics.density
+    return Math.round(this * density)
+}
+
 fun View.show() {
     if (this.visibility != View.GONE)
         this.visibility = View.GONE

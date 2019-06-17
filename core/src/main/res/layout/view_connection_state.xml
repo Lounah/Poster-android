@@ -13,12 +13,9 @@
         android:layout_marginEnd="8dp"
         android:indeterminate="true"/>
 
-    <TextView
+    <com.lounah.core.widget.SingleLineTextView
         android:id="@+id/textViewConnectionState"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        tools:text="Connecting..."/>
+        android:layout_height="wrap_content"/>
 
 </merge>
