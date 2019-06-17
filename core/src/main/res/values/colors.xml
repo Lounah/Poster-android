@@ -4,5 +4,6 @@
     <!-- Core colors -->
     <color name="black">#000</color>
     <color name="white">#fff</color>
+    <color name="grayLight">#706F6F</color>
 
 </resources>

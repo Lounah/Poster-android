@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatImageButton
 import com.lounah.core.utils.AppUtils
 
-class ResponsiveImageButton : AppCompatImageButton {
+open class ResponsiveImageButton : AppCompatImageButton {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
