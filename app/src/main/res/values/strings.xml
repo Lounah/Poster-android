@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Poster</string>
+    <string name="title_newsfeed">News Feed</string>
 </resources>
