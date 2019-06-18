@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.ResultReceiver
+import android.util.TypedValue
 import android.view.inputmethod.InputMethodManager
 
 
@@ -25,6 +26,11 @@ fun View.show() {
 fun View.hide() {
     if (this.visibility != View.VISIBLE)
         this.visibility = View.VISIBLE
+}
+
+fun View.addRipple() = with(TypedValue()) {
+    context.theme.resolveAttribute(android.R.attr.selectableItemBackground, this, true)
+    setBackgroundResource(resourceId)
 }
 
 /**
@@ -60,6 +66,10 @@ inline fun View.measured(crossinline action: () -> Unit) {
  */
 fun ViewGroup.inflateView(@LayoutRes layout: Int): View {
     return LayoutInflater.from(this.context).inflate(layout, this, false)
+}
+
+fun ViewGroup.inflateViewWithAttachingToRoot(@LayoutRes layout: Int): View {
+    return LayoutInflater.from(this.context).inflate(layout, this, true)
 }
 
 fun View.showIme() {

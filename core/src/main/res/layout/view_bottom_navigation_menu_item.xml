@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <com.lounah.core.widget.ResponsiveImageButton
+        android:id="@+id/bottomNavMenuItemDrawable"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_bookmark_filled"/>
+
+    <com.lounah.core.widget.SingleLineTextView
+        android:id="@+id/bottomNavMenuItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:paddingBottom="8dp"
+        android:textAlignment="center"/>
+
+</merge>
