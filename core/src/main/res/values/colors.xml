@@ -7,4 +7,10 @@
     <color name="grayLight">#706F6F</color>
     <color name="gray">#757575</color>
 
+
+    <!-- Search View -->
+    <color name="search_view_gray">#f0f0f0</color>
+    <color name="search_view_text_gray">#787878</color>
+    <color name="search_view_gray_activated">#d3d3d3</color>
+
 </resources>

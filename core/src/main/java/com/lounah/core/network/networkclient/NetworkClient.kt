@@ -1,11 +1,9 @@
 package com.lounah.core.network.networkclient
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkClient {
@@ -14,14 +12,14 @@ object NetworkClient {
     private const val BASE_URL = ""
 
     fun provideApiService(
-        gson: Gson,
+        moshi: Moshi,
         client: OkHttpClient
     ): PosterApiService = Retrofit.Builder()
-            .client(client)
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(PosterApiService::class.java)
+        .client(client)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .build()
+        .create(PosterApiService::class.java)
 
     fun provideOkHttpClient(): OkHttpClient {
         val okBuilder = OkHttpClient.Builder().apply {
@@ -33,9 +31,9 @@ object NetworkClient {
         return okBuilder.build()
     }
 
-    fun provideGson(dateAdapter: DateAdapter): Gson {
-        return GsonBuilder()
-                .registerTypeAdapter(Date::class.java, dateAdapter)
-                .create()
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .build()
+
     }
 }
