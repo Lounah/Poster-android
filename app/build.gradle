@@ -1,26 +1,20 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
-apply from: '../core_dependencies.gradle'
-apply from: '../test_dependencies.gradle'
+apply plugin: 'io.fabric'
 
 apply from: "$project.rootDir/secretconfig.gradle"
 
 android {
-    compileSdkVersion versions.compileSdk
-
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
-        applicationId names.applicationId
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
         versionCode rootProject.gitCommitCount
-        versionName = '0.0.1'
-        archivesBaseName = 'poster'
-
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        versionName Releases.versionName
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
 
         resConfig 'en'
         manifestPlaceholders += [
@@ -28,6 +22,19 @@ android {
         ]
 
         manifestPlaceholders = [fabricApiKey: "${apiKeys.fabric}"]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+        debug {
+            ext.alwaysUpdateBuildId = false
+        }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 
     signingConfigs {
@@ -39,40 +46,27 @@ android {
         }
     }
 
-    buildTypes {
-        release {
-            // There's a Dex Splitter issue when enabling DataBinding & proguard in dynamic features
-            // The temporary workaround is to disable shrinking
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
-                    'proguard-rules.pro'
-            manifestPlaceholders += [crashlyticsEnabled: true]
-        }
-        debug {
-            ext.alwaysUpdateBuildId = false
-        }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-//    dynamicFeatures = [':about', ':designernews', ':dribbble', ':search']
-
-
-    dynamicFeatures = [":newsfeed"]
+    dynamicFeatures = [Modules.newsFeed]
 }
 
 dependencies {
-    implementation project(':core')
+    implementation project(Modules.core)
 
-    implementation "com.crashlytics.sdk.android:crashlytics:${versions.crashlytics}"
-//    implementation "com.google.firebase:firebase-core:${versions.firebase}"
+    implementation Libraries.kotlin
+    implementation Libraries.crashlytics
 
-//    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    implementation SupportLibraries.design
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.recyclerview
+
+    implementation Libraries.lifecycleExtensions
+
+    implementation Libraries.moshiConverter
+
+    debugImplementation Libraries.leakCanaryAndroid
 }
-
-// Must be applied after dependencies. See https://stackoverflow.com/a/38018985
-//apply plugin: 'com.google.gms.google-services'
 

@@ -21,15 +21,15 @@ class PosterToolbar : ConstraintLayout {
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_poster_toolbar, this, true)
-        textViewTitle.apply {
-            textStyle = SingleLineTextView.TextStyle.BOLD
-            textSize = 25f
-            text = "Feed"
-        }
     }
 
     fun setTitle(title: String) {
-        textViewTitle.text = title
+        textViewTitle.alpha = 0f
+        textViewTitle.apply {
+            textStyle = SingleLineTextView.TextStyle.BOLD
+            textSize = 25f
+            text = title
+        }
         textViewTitle.animate().withLayer()
                 .setDuration(TITLE_ANIMATION_DURATION_MS)
                 .alpha(1f)

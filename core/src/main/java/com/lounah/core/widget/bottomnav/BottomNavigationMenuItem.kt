@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.view_bottom_navigation_menu_item.view.*
 import android.graphics.PorterDuff
 import com.lounah.core.R
 import com.lounah.core.extensions.getColorCompat
+import com.lounah.core.widget.SingleLineTextView
 
 
 class BottomNavigationMenuItem : FrameLayout {

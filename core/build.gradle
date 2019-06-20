@@ -1,42 +1,23 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'kotlin-kapt'
 
-apply from: '../core_dependencies.gradle'
-apply from: '../test_dependencies.gradle'
-
-android {
-    compileSdkVersion versions.compileSdk
-
-    defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-    }
-
-    buildTypes {
-        release {
-            consumerProguardFiles 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    packagingOptions {
-        exclude 'META-INF/core_debug.kotlin_module'
-    }
-
-}
-
 dependencies {
-    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
-}
+    implementation Libraries.lifecycleExtensions
+    kapt Libraries.lifecycleCompiler
+    testImplementation TestLibraries.lifecycleTesting
 
-androidExtensions {
-    experimental = true
+    implementation GoogleLibraries.playCore
+
+    implementation Libraries.palette
+    implementation SupportLibraries.design
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.recyclerview
+    implementation Libraries.retrofit
+    implementation Libraries.moshiConverter
+    implementation Libraries.moshi
+
+    implementation Libraries.constraintLayout
+
+    api Libraries.glide
+    kapt Libraries.glideCompiler
 }

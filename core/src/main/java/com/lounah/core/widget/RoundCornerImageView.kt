@@ -6,6 +6,7 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
+import com.lounah.core.extensions.addRipple
 import com.lounah.core.extensions.dpToPx
 
 class RoundCornerImageView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)

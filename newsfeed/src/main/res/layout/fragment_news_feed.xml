@@ -2,10 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.lounah.core.widget.PosterToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_round_search_view"
+        android:layout_height="36dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_search"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="start|center_vertical"/>
+
+    </FrameLayout>
 
 </LinearLayout>
